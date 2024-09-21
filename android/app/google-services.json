@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "919323518278",
+    "project_id": "assignmentproject-6e9a5",
+    "storage_bucket": "assignmentproject-6e9a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919323518278:android:b5cebf1c07bd1e0bce7147",
+        "android_client_info": {
+          "package_name": "com.Assignment.tictok_clone2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919323518278-38b19ccpgioq41jbb6hf46ctnds7rhac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBByO9UkFcMAttDGxPDp07SOfSWCRrXrxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919323518278-38b19ccpgioq41jbb6hf46ctnds7rhac.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "919323518278-upp0k529nggfj3sl791nq9ocganlcucp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Assingment.TiktokClone"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919323518278:android:8dd8cc82dccc5979ce7147",
+        "android_client_info": {
+          "package_name": "com.example.tictok_clone2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919323518278-38b19ccpgioq41jbb6hf46ctnds7rhac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBByO9UkFcMAttDGxPDp07SOfSWCRrXrxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919323518278-38b19ccpgioq41jbb6hf46ctnds7rhac.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "919323518278-upp0k529nggfj3sl791nq9ocganlcucp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Assingment.TiktokClone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
