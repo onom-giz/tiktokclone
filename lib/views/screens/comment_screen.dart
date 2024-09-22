@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tictok_clone2/constants.dart';
 //import 'package:get/get_core/src/get_main.dart';
 import 'package:tictok_clone2/controllers/comment_controller.dart';
 import 'package:timeago/timeago.dart' as tago;
@@ -84,12 +85,16 @@ class CommentScreen extends StatelessWidget {
                               ],
                             ),
                             trailing: InkWell(
-                              onTap: () {},
-                              child: Icon(
-                                Icons.favorite,
-                                size: 25,
-                                color: Colors.red,
-                              ),
+                              onTap: () => commentController
+                                  .likeComment(comment.id),
+                              child: Icon(Icons.favorite,
+                                  size: 25,
+                                  color: comment.likes
+                                          .contains(
+                                              authController
+                                                  .user.uid)
+                                      ? Colors.red
+                                      : Colors.white),
                             ),
                           );
                         });
@@ -120,13 +125,14 @@ class CommentScreen extends StatelessWidget {
                 ),
               ),
               trailing: TextButton(
-                  onPressed: () => commentController
-                      .postComment(_commentController.text),
-                  child: const Text(
-                    'Send',
-                    style: TextStyle(
-                        fontSize: 16, color: Colors.white),
-                  )),
+                onPressed: () => commentController
+                    .postComment(_commentController.text),
+                child: const Text(
+                  'Send',
+                  style: TextStyle(
+                      fontSize: 16, color: Colors.white),
+                ),
+              ),
             ),
           ],
         ),

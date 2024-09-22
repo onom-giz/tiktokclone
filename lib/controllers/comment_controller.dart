@@ -92,5 +92,25 @@ class CommentController extends GetxController {
         .collection('comments')
         .doc(id)
         .get();
+
+    if ((doc.data()! as dynamic)['likes'].contains(uid)) {
+      await firestore
+          .collection('videos')
+          .doc(_postId)
+          .collection('comments')
+          .doc(id)
+          .update({
+        'likes': FieldValue.arrayRemove([uid]),
+      });
+    } else {
+      await firestore
+          .collection('videos')
+          .doc(_postId)
+          .collection('comments')
+          .doc(id)
+          .update({
+        'likes': FieldValue.arrayUnion([uid]),
+      });
+    }
   }
 }
