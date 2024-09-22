@@ -84,7 +84,7 @@ class CommentController extends GetxController {
     }
   }
 
-  likeComment() async {
+  likeComment(String? id) async {
     var uid = authController.user.uid;
     DocumentSnapshot doc = await firestore
         .collection('videos')
