@@ -31,7 +31,7 @@ class Comment {
   static Comment fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return Comment(
-        comment: snapshot['username'],
+        comment: snapshot['comment'],
         datePublished: snapshot['datePublished'],
         username: snapshot['username'],
         id: snapshot['id'],

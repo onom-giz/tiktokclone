@@ -90,6 +90,7 @@ class AuthController extends GetxController {
   void loginUser(
     String email,
     String password,
+    File? profilePhoto,
   ) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
@@ -102,5 +103,9 @@ class AuthController extends GetxController {
     } catch (e) {
       Get.snackbar("Error Logging in", e.toString());
     }
+  }
+
+  void signOut() async {
+    await firebaseAuth.signOut();
   }
 }

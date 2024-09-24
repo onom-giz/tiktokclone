@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:tictok_clone2/constants.dart';
+import 'package:tictok_clone2/views/screens/auth/login_screen.dart';
 import 'package:tictok_clone2/views/widgets/text_input_field.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  SignupScreen({super.key});
   final TextEditingController _emailController =
       TextEditingController();
   final TextEditingController _passwordController =
+      TextEditingController();
+  final TextEditingController _usernameController =
       TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -24,9 +27,45 @@ class LoginScreen extends StatelessWidget {
                 fontWeight: FontWeight.w900),
           ),
           const Text(
-            "Login",
+            "Register",
             style: TextStyle(
                 fontSize: 25, fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Stack(
+            children: [
+              const CircleAvatar(
+                radius: 64,
+                backgroundImage: NetworkImage(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTamBOMm3ru8rl6VE07wbxQYS0bFgtJdYLJpOOfHFzMLPbBkWLwqzBH6HHS7Q&s'),
+                backgroundColor: Colors.black,
+              ),
+              Positioned(
+                bottom: -10,
+                left: 80,
+                child: IconButton(
+                  onPressed: () =>
+                      authController.pickImage(),
+                  icon: Icon(
+                    Icons.add_a_photo,
+                  ),
+                ),
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            margin:
+                const EdgeInsets.symmetric(horizontal: 20),
+            child: TextInputField(
+                controller: _usernameController,
+                icon: Icons.person,
+                lebelText: 'Username'),
           ),
           const SizedBox(
             height: 25,
@@ -64,12 +103,14 @@ class LoginScreen extends StatelessWidget {
                 borderRadius: const BorderRadius.all(
                     Radius.circular(5))),
             child: InkWell(
-              onTap: () => authController.loginUser(
+              onTap: () => authController.registerUser(
                   _emailController.text,
-                  _passwordController.text),
+                  _usernameController.text,
+                  _passwordController.text,
+                  authController.profilePhoto),
               child: const Center(
                 child: Text(
-                  'Login',
+                  'Register',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700),
@@ -84,17 +125,19 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Don\'t have an account',
+                'Already have an account?',
                 style: TextStyle(
                   fontSize: 20,
                 ),
               ),
               InkWell(
-                onTap: () {
-                  print('Navigating user');
-                },
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                ),
                 child: Text(
-                  'Register',
+                  'Login',
                   style: TextStyle(
                       fontSize: 20, color: buttonColor),
                 ),

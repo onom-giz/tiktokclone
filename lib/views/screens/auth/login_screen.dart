@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictok_clone2/constants.dart';
+import 'package:tictok_clone2/views/screens/auth/signup_screen.dart';
 import 'package:tictok_clone2/views/widgets/text_input_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -66,7 +67,8 @@ class LoginScreen extends StatelessWidget {
             child: InkWell(
               onTap: () => authController.loginUser(
                   _emailController.text,
-                  _passwordController.text),
+                  _passwordController.text,
+                  authController.profilePhoto),
               child: const Center(
                 child: Text(
                   'Login',
@@ -90,9 +92,11 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {
-                  print('Navigating user');
-                },
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SignupScreen(),
+                  ),
+                ),
                 child: Text(
                   'Register',
                   style: TextStyle(
