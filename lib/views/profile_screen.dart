@@ -200,8 +200,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ? 'Sign Out'
                                 : controller
                                         .user['isFollowing']
-                                    ? 'Unfollow'
-                                    : 'Follow',
+                                    ? 'Follow'
+                                    : 'Unfollow',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
