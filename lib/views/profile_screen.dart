@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Column(
                         children: [
                           Text(
-                            controller.user!['following'] ??
+                            controller.user['following'] ??
                                 "",
                             style: const TextStyle(
                                 fontSize: 20,
@@ -121,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Column(
                         children: [
                           Text(
-                            controller.user!['followers'],
+                            controller.user['followers'],
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight:
@@ -151,7 +151,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Column(
                         children: [
                           Text(
-                            controller.user!['likes'],
+                            controller.user['likes'],
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight:

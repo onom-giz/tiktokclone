@@ -65,7 +65,9 @@ class AuthController extends GetxController {
           image != null) {
         UserCredential cred = await firebaseAuth
             .createUserWithEmailAndPassword(
-                email: email, password: password);
+          email: email,
+          password: password,
+        );
 
         String downloadUrl = await uploadToStorage(image);
         model.User user = model.User(
