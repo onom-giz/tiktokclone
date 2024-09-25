@@ -12,9 +12,9 @@ import 'package:tictok_clone2/views/screens/home_screen.dart';
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   late Rx<User?> _user;
-  Rx<File?> _pickedImage = Rx(null);
+  File? _pickedImage;
 
-  File? get profilePhoto => _pickedImage.value;
+  File? get profilePhoto => _pickedImage;
 
   User get user => _user.value!;
 
@@ -41,7 +41,8 @@ class AuthController extends GetxController {
       Get.snackbar('Profile Picture',
           'You have successfully selected your profile picture');
     }
-    _pickedImage = Rx<File?>(File(pickedImage!.path));
+    _pickedImage = File(pickedImage!.path);
+    update();
   }
 
   Future<String> uploadToStorage(File image) async {
@@ -58,14 +59,16 @@ class AuthController extends GetxController {
 
   void registerUser(String username, String email,
       String password, File? image) async {
+    print("Text:" + email);
     try {
       if (username.isNotEmpty &&
           email.isNotEmpty &&
           password.isNotEmpty &&
           image != null) {
+        print("Text:" + email);
         UserCredential cred = await firebaseAuth
             .createUserWithEmailAndPassword(
-          email: email,
+          email: email.trim(),
           password: password,
         );
 

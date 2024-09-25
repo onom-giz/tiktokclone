@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tictok_clone2/constants.dart';
+import 'package:tictok_clone2/controllers/auth_controller.dart';
 import 'package:tictok_clone2/views/screens/auth/login_screen.dart';
 import 'package:tictok_clone2/views/widgets/text_input_field.dart';
 
@@ -36,27 +38,36 @@ class SignupScreen extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            Stack(
-              children: [
-                const CircleAvatar(
-                  radius: 64,
-                  backgroundImage: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTamBOMm3ru8rl6VE07wbxQYS0bFgtJdYLJpOOfHFzMLPbBkWLwqzBH6HHS7Q&s'),
-                  backgroundColor: Colors.black,
-                ),
-                Positioned(
-                  bottom: -10,
-                  left: 80,
-                  child: IconButton(
-                    onPressed: () =>
-                        authController.pickImage(),
-                    icon: Icon(
-                      Icons.add_a_photo,
+            GetBuilder<AuthController>(
+                builder: (authController) {
+              return Stack(
+                children: [
+                  authController.profilePhoto != null
+                      ? CircleAvatar(
+                          radius: 64,
+                          backgroundImage: FileImage(
+                              authController.profilePhoto!),
+                        )
+                      : CircleAvatar(
+                          radius: 64,
+                          backgroundImage: NetworkImage(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTamBOMm3ru8rl6VE07wbxQYS0bFgtJdYLJpOOfHFzMLPbBkWLwqzBH6HHS7Q&s'),
+                          backgroundColor: Colors.black,
+                        ),
+                  Positioned(
+                    bottom: -10,
+                    left: 80,
+                    child: IconButton(
+                      onPressed: () =>
+                          authController.pickImage(),
+                      icon: Icon(
+                        Icons.add_a_photo,
+                      ),
                     ),
-                  ),
-                )
-              ],
-            ),
+                  )
+                ],
+              );
+            }),
             const SizedBox(
               height: 25,
             ),
@@ -105,11 +116,14 @@ class SignupScreen extends StatelessWidget {
                   borderRadius: const BorderRadius.all(
                       Radius.circular(5))),
               child: InkWell(
-                onTap: () => authController.registerUser(
-                    _emailController.text,
-                    _usernameController.text,
-                    _passwordController.text,
-                    authController.profilePhoto),
+                onTap: () {
+                  print(_emailController.text);
+                  authController.registerUser(
+                      _usernameController.text,
+                      _emailController.text,
+                      _passwordController.text,
+                      authController.profilePhoto);
+                },
                 child: const Center(
                   child: Text(
                     'Register',
